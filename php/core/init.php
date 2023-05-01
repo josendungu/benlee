@@ -9,10 +9,10 @@ $main_content = true;
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => '127.0.0.1',
-        'username' => 'root',
-        'password' => '',
-        'db' => 'benlee'
+        'host' => 'localhost',
+        'username' => 'muddwygx_root',
+        'password' => 'Jmn.07213101',
+        'db' => 'muddwygx_benlee'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
@@ -23,6 +23,7 @@ $GLOBALS['config'] = array(
         'token_name' => 'token'
     )
 );
+
 
 spl_autoload_register(function($class) {
     require_once 'php/classes/' . $class . '.php';
