@@ -17,6 +17,18 @@ if(Input::exists()){
 
             $product = new Product();
 
+            $product_url = $str = str_replace(" ", "-", Input::get('product_name'));
+            $existing_url_fetch = $product->searchProductByProductUrl($product_url);
+
+            if($existing_url_fetch){
+                $count = $product->count();
+                
+                if ($count >= 1){
+                    $product_url .= "-".$count;
+                }
+            }
+
+
             try {
                 $product->create(array(
                     'product_name' => Input::get('product_name'),
@@ -25,7 +37,8 @@ if(Input::exists()){
                     'product_price' => Input::get('product_price'),
                     'product_offer_price' => Input::get('product_offer_price'),
                     'product_picture' => $path,
-                    'date_added' => date('Y-m-d H:i:s')
+                    'date_added' => date('Y-m-d H:i:s'),
+                    'product_url' => $product_url
                 ));
                 echo "successful";
             } catch(Exception $e) {

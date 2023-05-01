@@ -12,10 +12,10 @@ $category_data = $category->data();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>BenLee Hardware</title>
+	<title> BenLee Hardware - Number 1 Hardware Store in Kenya </title>
 	<meta charset="utf-8">
+	<meta name="description" content="Benlee Hardware is an online store that deals with selling hardware materials in Kenya such as boards, iron sheets, chain links and Deformed bars">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Colo Shop Template">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- font Awesome Cdn -->
@@ -39,99 +39,12 @@ $category_data = $category->data();
 
 <body>
 
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMMN7RR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 	<div class="super_container">
 
 		<!-- Header -->
-		<header class="header trans_300">
-
-			<!-- main Navigation -->
-			<div class="main_nav_container">
-				<div class="contact-info">
-					<span > <a class="email" href="mailto:info@benlee.co.ke">info@benlee.co.ke</a></span>|
-					<span > <a class="phone" href="tel:+254723370349">+254723370349</a></span>
-
-					<div class="socials">
-					<i class="fa fa-twitter" aria-hidden="true"></i>
-					<a class="social-icon" target="_blank" href="https://www.facebook.com/Benlee-Agencies-108399281405059/"><i class="fa fa-facebook" aria-hidden="true"></i></a> 
-					<i class="fa fa-instagram" aria-hidden="true"></i>
-					</div>
-					
-				</div>
-				
-				<div class="banner banner-popup">
-					<!-- Banner -->
-					<div class="align-items-center justify-content-center">
-						<div class="row category-container d-flex align-items-center justify-content-center">
-							<nav class="navbar banner-nav ">
-								<ul class="navbar_menu">
-								<?php
-								foreach($category_data as $result ){
-								?>
-									<li id="<?php echo $result->category_id ?>"><a href="#" onclick="displayCategory(<?php echo $result->category_id ?>, 1)"><?php echo $result->category_name ?></a></li>
-
-								<?php
-								}
-								?>	
-								</ul>
-							</nav>
-
-							<div class="hamburger_container">
-								<i class="fa fa-bars" aria-hidden="true"></i>
-							</div>
-
-						</div>
-					</div>
-					
-				</div>
-				
-				<div class=" header-grid-container">
-					<div class="grid-element ">
-						<div class="logo_container">
-							<a href="#">BenLee <span>Hardware</span></a>
-						</div>
-					</div>
-
-					<div class="grid-element">
-						<div class="search-container">
-							<form class="form-group" action="" method="post" id="search-products" enctype="form-data">
-
-								<div class="input-group input-group-sm mb-3">
-									<input type="text" class="form-control input-search" placeholder="Search" name="search_string" aria-label=".search">
-									<div class="input-group-append">
-										<button class="btn btn-secondary" type="submit" value="Upload" id="inputGroup-sizing-sm">
-											<i class="fa fa-search"></i>
-										</button>
-									</div>
-								</div>
-								
-							</form>
-							
-						</div>
-					</div>
-
-					<div class="grid-element">
-						<nav class="navbar">
-
-							<ul class="navbar_user">
-									
-								<li class="checkout">
-									<a href="cart.php">
-										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-										<span id="checkout_item" class="checkout_items">2</span>
-									</a>
-								</li>
-
-								<li style="margin-left: 10px;">
-									<div class="hamburger_container">
-										<i class="fa fa-bars" aria-hidden="true"></i>
-									</div>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>	
-			</div>
-		</header>
+		<?php include 'header.php' ?>
 
 
 		<!-- product modal -->
@@ -145,23 +58,7 @@ $category_data = $category->data();
 			</div>
 		</div>
 
-		<!-- Banner -->
-		<div class="banner align-items-center justify-content-center">
-				<div class="row category-container d-flex align-items-center justify-content-center">
-					<nav class="navbar sticky-top">
-						<ul class="navbar_menu">
-						<?php
-						foreach($category_data as $result ){
-						?>
-							<li id="<?php echo $result->category_id ?>"><a href="#" onclick="displayCategory(<?php echo $result->category_id ?>, 1)"><?php echo $result->category_name ?></a></li>
-
-						<?php
-						}
-						?>	
-						</ul>
-					</nav>
-
-		</div>
+		<?php include 'banner.php'?>
 			
 		</div>
 
@@ -202,60 +99,7 @@ $category_data = $category->data();
 			
 		</p>
 
-		<!-- Footer  timestamp=2:22:11-->
-		<footer class="footer">
-
-			<div class="footer-elements">
-				<div class="footer-element">
-					<div class="footer-element-title">Latest</div>
-					<ul class="product-list-widget" id="latest">
-						
-					</ul>
-				</div>
-				<div class="footer-element">
-					<div class="footer-element-title">Best Selling</div>
-					<ul class="product-list-widget" id="best-selling">
-
-					</ul>
-				</div>
-				<div class="footer-element">
-					<div class="footer-element-title">Top Rated</div>
-					<ul class="product-list-widget" id="top-rated">
-						
-					</ul>
-				</div>
-				<div class="footer-element">
-					<div class="footer-element-title">Info</div>
-
-					<div class="info-content">
-
-					<p class="footer-statement" style="color: #ffffff;">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac gravida augue. Maecenas pharetra dignissim ligula nec euismod. Duis lectus augue, tempor sit amet maximus non, vehicula et massa. Nunc sodales in est feugiat ullamcorper. Aliquam maximus nibh ultricies aliquet dapibus. Proin varius efficitur ex.
-					</p>
-
-					<p class="location" style="color: #ffffff;">Location: <span>Mwihoko</span></p>
-
-					<p class="call" style="color: #ffffff;">Phone: <span>+254723370349</span></p>
-
-					<p class="email" style="color: #ffffff;">Email: <span>info@benlee.com</span></p>
-					</div>
-					
-
-
-				</div>
-			</div>
-
-			<div class="footer_container">
-				<div class="row">
-					<div class="col-lg-6 logo_container_footer">
-						<a href="/index.php">BenLee <span>Hardware</span></a>
-						<span class="cr">©2021 All Right Reserved. </span>
-					</div>
-				</div>
-				
-			</div>
-			
-		</footer>
+		<?php include 'footer.php' ?>
 	</div>
 
 	<!-- jquery JS File -->

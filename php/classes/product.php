@@ -98,6 +98,24 @@ class Product {
     }
 
 
+    public function searchProductByProductUrl($product_url){
+
+        $sql = "SELECT * FROM products WHERE product_url LIKE '%$product_url%'";   
+
+        $group = $this->_db->fetchSearch($sql);
+
+        if($this->_db->count()){
+            $this->_data = $this->_db->results();
+            $this->_count = $this->_db->count();
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
     public function searchProducts($search_string, $category_id = null){
 
         $sql = null;

@@ -26,6 +26,21 @@ class Category {
 
     }
 
+
+    public function findByUrl($category_url = null) {
+
+        if($category_url) {
+            $data = $this->_db->get('category', array('category_url', '=', $category_url));        
+            
+            if($data->count()) {
+                $this->_data = $this->_db->results()[0];
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public function create($fields = array()) {
         if(!$this->_db->insert('category', $fields)) {
             throw new Exception('Sorry, there was a problem adding the category;');

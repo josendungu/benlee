@@ -138,7 +138,6 @@ trans_300{
     width: 100%;
     overflow: hidden; 
     position: relative;
-    min-height: 100vh;
 }
 
 .fill_hight{
@@ -155,6 +154,7 @@ trans_300{
     font-weight: 300;
     color: white;
 }
+
 
 
 .category-container{
@@ -455,14 +455,14 @@ trans_300{
     color: #1e1e27;
 }
 
-.logo_container a{
+.logo_container h1{
     font-size: 20px;
     color: #1e1e27;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.logo_container a span{
+.logo_container h1 span{
     color: #4F8C0A;
 }
 
@@ -483,6 +483,10 @@ trans_300{
     background-color: black;
     position: absolute; 
     bottom: 0;
+}
+
+ul li a.footer-product {
+    color: white;
 }
 
 /* 3.3 main slider */
@@ -616,6 +620,15 @@ a.add_link{
     margin-right: auto;
 }
 
+.product_button{
+    width: 30%;
+}
+
+.product-desc {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 .product_image img{
     width: 100%;
 }
@@ -733,12 +746,12 @@ a.add_link{
 
 .map{
     padding: 20px;
-    margin-bottom: 400px;
 }
+
 
 /* 11. footer */
 footer{
-    position: absolute; 
+    /* position: absolute;  */
     bottom: 0;
     width: 100%;
     background-color: #3d3d3d;
@@ -856,6 +869,10 @@ footer{
 
 .products-table{
     padding: 50px;
+}
+
+.product_container {
+    margin-bottom: 30px;
 }
 
 .customer-details{
@@ -1160,7 +1177,7 @@ footer{
     .about-text{
         font-size: 12px;
     }
-    .logo_container a{
+    .logo_container h1{
         font-size: 15px;
         font-weight: 700;
         text-transform: uppercase;
@@ -1202,7 +1219,7 @@ footer{
         grid-template-columns: 3fr 4fr;
     }
 
-    .logo_container a {
+    .logo_container h1 {
         font-size: 15px;
     }
 
@@ -1330,7 +1347,7 @@ footer{
         text-align: left;
         padding-left: 10px;
     }
-    .logo_container a{
+    .logo_container h1{
         font-size: 14px;
     }
 

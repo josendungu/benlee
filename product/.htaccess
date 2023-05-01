@@ -1,0 +1,2 @@
+RewriteEngine On
+FallbackResource ../prod-det.php

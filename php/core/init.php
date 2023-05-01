@@ -5,6 +5,8 @@
 
 session_start();
 
+$main_content = true;
+
 $GLOBALS['config'] = array(
     'mysql' => array(
         'host' => '127.0.0.1',

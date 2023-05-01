@@ -5,6 +5,12 @@ if(Input::exists()){
 
     
     $output = "";
+    $main_content_page = Input::get('main_page');
+    $base_url = '';
+
+    if($main_content_page == 'false'){
+        $base_url = '../';
+    }
 
     if(Input::get('content') == "latest"){
         $product = new Product();
@@ -17,9 +23,10 @@ if(Input::exists()){
                 $product_price = $p->product_price;
                 $output .= '
                     <li>
+                    <a class="footer-product" href="'.$base_url."product/".$p->product_url.'">
 						<div class="product-elements" id="'.$p->product_id.'">
 							<div class="product-element">
-								<img class="footer-product-image" src="'.$p->product_picture.'" alt="product">
+								<img class="footer-product-image" src="'.$base_url.$p->product_picture.'" alt="product">
 							</div>
 							<div class="product-element">
 								<div class="product-footer-name">
@@ -41,6 +48,7 @@ if(Input::exists()){
 								</div>
 							</div>
 						</div>
+                        </a>
 					</li>
                 ';
             }
@@ -66,9 +74,10 @@ if(Input::exists()){
                 $product_price = $p->product_price;
                 $output .= '
                     <li>
+                    <a class="footer-product" href="'.$base_url."product/".$p->product_url.'">
 						<div class="product-elements" id="'.$p->product_id.'">
 							<div class="product-element">
-								<img class="footer-product-image" src="'.$p->product_picture.'" alt="product">
+								<img class="footer-product-image" src="'.$base_url.$p->product_picture.'" alt="product">
 							</div>
 							<div class="product-element">
 								<div class="product-footer-name">
@@ -90,6 +99,7 @@ if(Input::exists()){
 								</div>
 							</div>
 						</div>
+                        </a>
 					</li>
                 ';
             }
@@ -117,9 +127,10 @@ if(Input::exists()){
                 $product_price = $p->product_price;
                 $output .= '
                     <li>
+                    <a  class="footer-product" href="'.$base_url."product/".$p->product_url.'">
 						<div class="product-elements" id="'.$p->product_id.'">
 							<div class="product-element">
-								<img class="footer-product-image" src="'.$p->product_picture.'" alt="product">
+								<img class="footer-product-image" src="'.$base_url.$p->product_picture.'" alt="product">
 							</div>
 							<div class="product-element">
 								<div class="product-footer-name">
@@ -141,6 +152,7 @@ if(Input::exists()){
 								</div>
 							</div>
 						</div>
+                        </a>
 					</li>
                 ';
             }

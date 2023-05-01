@@ -1,5 +1,6 @@
 
 var menuActive = false;
+var isCurrentContentMain = true; 
 
 
 
@@ -27,6 +28,7 @@ function displayCategory(category_id, page) {
 function displayProductModal(product_id){
 
 
+    //Need it to take me to the next page.
     var data = {"product_id":product_id};
     jQuery.ajax({
         url:"product-details.php",
@@ -522,9 +524,12 @@ function displayOrders(fetch){
 
 
 function addToCart(product_id){
+
+    var url = getUrl("product-details.php");
+
     var data = {"product_id":product_id, "return_data":true};
     jQuery.ajax({
-        url:"product-details.php",
+        url: url,
         method:"post",
         data:data,
         success: function(e) {
@@ -609,6 +614,15 @@ function closeMenu() {
     
 }
 
+function getUrl(page){
+    var back = "../"
+    if (isCurrentContentMain){
+        return page
+    } else {
+        return back.concat(page)
+    }
+}
+
 
 
 jQuery(document).ready(function ($) {
@@ -625,11 +639,23 @@ jQuery(document).ready(function ($) {
     var bestSellling = document.querySelector("#best-selling");
     var topRated = document.querySelector("#top-rated");
     var adminContent = document.querySelector(".admin-content");
+    var isMainContent = document.querySelector(".content_container");
+
+
+    if(isMainContent == null){
+        isCurrentContentMain = false;
+    } else {
+        isCurrentContentMain = true;
+    }
 
     var uploading = false;
 
     initMenu();
-    displayMainContent();
+
+    if (isMainContent) {
+        displayMainContent();
+    }
+    
     onLoadCartNumbers();
     fetchTotal();
     initSlider();
@@ -643,8 +669,6 @@ jQuery(document).ready(function ($) {
     if(cartContainer){
         loadCartProducts();
     }
-
-    
     
 
     if(adminContent){
@@ -659,11 +683,13 @@ jQuery(document).ready(function ($) {
 
     function loadLatest(){
 
+        var url = getUrl("footer-content.php");
+
         if(footerLatest){
             jQuery.ajax({
-                url:"footer-content.php",
+                url: url,
                 method:"post",
-                data:{"content": "latest"},
+                data:{"content": "latest", "main_page": isCurrentContentMain},
                 success: function(e) {
                     footerLatest.innerHTML = e;
     
@@ -679,21 +705,24 @@ jQuery(document).ready(function ($) {
 
     function initNavbarControl(){
         window.addEventListener('scroll', () => {
-            var lastScrollTop = 5;
+            var lastScrollTop = 10;
            
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             var headCont = document.querySelector(".header-grid-container");
             var bannerPop = document.querySelector(".banner-popup");
+            var bannerNormal = document.querySelector(".banner-normal")
 
             if(headCont){
                 if(scrollTop > lastScrollTop){
 
                     headCont.style.display = "none";
                     bannerPop.style.display = "block";
+                    bannerNormal.style.display = "none";
                 } else {
                     headCont.style.display = "grid";
                     bannerPop.style.display = "none";
                     bannerPop.style.backgroundColor = "#ffffff";
+                    bannerNormal.style.display = "block";
 
     
                 }
@@ -706,11 +735,14 @@ jQuery(document).ready(function ($) {
     }
 
     function loadBestSelling(){
+
+
+        var url = getUrl("footer-content.php");
         if(bestSellling){
             jQuery.ajax({
-                url:"footer-content.php",
+                url:url,
                 method:"post",
-                data:{"content": "best-selling"},
+                data:{"content": "best-selling","main_page": isCurrentContentMain},
                 success: function(e) {
                     bestSellling.innerHTML = '';
                     bestSellling.innerHTML = e;
@@ -723,11 +755,14 @@ jQuery(document).ready(function ($) {
     }
 
     function loadTopRated(){
+
+        var url = getUrl("footer-content.php");
+
         if(topRated){
             jQuery.ajax({
-                url:"footer-content.php",
+                url: url,
                 method:"post",
-                data:{"content": "top-rated"},
+                data:{"content": "top-rated", "main_page": isCurrentContentMain},
                 success: function(e) {
                     topRated.innerHTML = '';
                     topRated.innerHTML = e;
@@ -920,15 +955,6 @@ jQuery(document).ready(function ($) {
 
     }));
 
-
-    $(".content_container").on('click', ".product" ,(function(e){
-
-        var product_id = $(this).attr('id');
-
-        displayProductModal(product_id);
-
-
-    }));
 
     $(".product-list-widget").on('click', ".product-elements" ,(function(e){
 
@@ -1136,7 +1162,7 @@ jQuery(document).ready(function ($) {
         $.ajax({
             url: "add-category.php",
             type: "POST",
-            data: new FormData(this),
+            data: add_data,
             contentType: false,
             cache: false,
             processData:false,

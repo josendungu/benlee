@@ -277,8 +277,8 @@ $category_data = $category->data();
 							</div>
 
 							<div class="product-name col-md-6 modal-margin-top">
-								<select class="form-select" required aria-label="Default select example" name="product_category">
-									<option selected>Open this select menu</option>
+								<select class="form-select" aria-label="Default select example" name="product_category" required>
+									<option selected value="">Open this select category</option>
 
 									<?php 
 										

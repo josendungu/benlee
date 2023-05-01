@@ -34,13 +34,14 @@ include_once 'php/core/init.php';
 
             $output .= '
             <div class="product-item">
+                <a href="product/'.$product->product_url.'">
                 <div class="product discount product_filter" id="'.$product->product_id.'">
                     <div class="product_image">
                         <img class="image" src="'.$product->product_picture.'" alt="product">
                     </div>
                     <div class="favorite favorite_left"></div>
                         <div class="product_info">
-                        <h6 class="product_name"><a href="#">'.$product->product_name.'</a></h6>';
+                        <h6 class="product_name"><a href="product/'.$product->product_url.'">'.$product->product_name.'</a></h6>';
 
                         $product_offer = $product->product_offer_price;
                         $product_price = $product->product_price;
@@ -57,6 +58,7 @@ include_once 'php/core/init.php';
                     $output .= '</div>
                 </div>
                 <div class="red_button add_link add_to_cart_button" id="'.$product->product_id.'"><a href="#">Add to Cart</a></div>
+                </a>
             </div>';	  
                     
 
