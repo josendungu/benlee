@@ -16,7 +16,6 @@ class DB {
             $this->_pdo = new PDO('mysql:host=' . Config::get('mysql/host') . ';dbname=' . Config::get('mysql/db'), Config::get('mysql/username'), Config::get('mysql/password'));
         } catch(PDOException $e) {
             die($e->getMessage());
-            echo "this is it";
         }
     }
 
@@ -24,7 +23,6 @@ class DB {
         if(!isset(self::$_instance)) {
             self::$_instance = new DB();
         }
-        echo "this is it 2";
         return self::$_instance;
     }
 
