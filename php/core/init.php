@@ -10,9 +10,9 @@ $main_content = true;
 $GLOBALS['config'] = array(
     'mysql' => array(
         'host' => 'localhost',
-        'username' => 'muddwygx_root',
-        'password' => 'Jmn.07213101',
-        'db' => 'muddwygx_benlee'
+        'username' => 'root',
+        'password' => '',
+        'db' => 'benlee'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
@@ -26,7 +26,7 @@ $GLOBALS['config'] = array(
 
 
 spl_autoload_register(function($class) {
-    require_once 'php/classes/' . $class . '.php';
+    require_once 'php/classes/' . strtolower($class) . '.php';
 });
 
 require_once 'php/functions/sanitize.php';
