@@ -32,6 +32,7 @@ spl_autoload_register(function($class) {
 require_once 'php/functions/sanitize.php';
 
 if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('sessions/session_name'))) {
+    echo "cookie";
     $hash = Cookie::get(Config::get('remember/cookie_name'));
     $hashCheck = DB::getInstance()->get('users_session', array('hash', '=', $hash));
 
