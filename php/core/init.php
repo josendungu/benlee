@@ -9,8 +9,8 @@ $main_content = true;
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => 'localhost',
-        'username' => 'root',
+        'host' => 'muddwygx',
+        'username' => '69tTz!!Ug9Xd8I',
         'password' => '',
         'db' => 'benlee'
     ),
