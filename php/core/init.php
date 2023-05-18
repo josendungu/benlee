@@ -9,10 +9,10 @@ $main_content = true;
 
 $GLOBALS['config'] = array(
     'mysql' => array(
-        'host' => 'muddwygx',
-        'username' => '69tTz!!Ug9Xd8I',
-        'password' => '',
-        'db' => 'benlee'
+        'host' => 'localhost',
+        'username' => 'muddwygx_root',
+        'password' => 'Jmn.07213101',
+        'db' => 'muddwygx_benlee'
     ),
     'remember' => array(
         'cookie_name' => 'hash',
