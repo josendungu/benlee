@@ -24,11 +24,11 @@ $GLOBALS['config'] = array(
     )
 );
 
-
+echo "one";
 spl_autoload_register(function($class) {
     require_once 'php/classes/' . $class . '.php';
 });
-
+echo "two";
 require_once 'php/functions/sanitize.php';
 
 if(Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('sessions/session_name'))) {
