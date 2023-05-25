@@ -1,2 +1,2 @@
 RewriteEngine On
-FallbackResource /category ../category-items.php
+FallbackResource ../category-items.php
