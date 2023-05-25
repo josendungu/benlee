@@ -1,2 +1,1 @@
-RewriteEngine On
-FallbackResource ../prod-det.php
+RedirectMatch 301 /product ../prod-det.php
