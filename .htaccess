@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^category/(.*)$ category-items.php
+RewriteRule ^product/(.*)$ prod-det.php
