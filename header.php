@@ -50,7 +50,7 @@
 				<div class=" header-grid-container">
 					<div class="grid-element ">
 						<div class="logo_container">
-							<h1 href="<?php echo $main_url?>">BenLee <span>Hardware</span></h1>
+							<h1><a href="<?php echo $main_url?>" style="color:black">BenLee <span>Hardware</span></a></h1>
 						</div>
 					</div>
 
@@ -58,7 +58,7 @@
 
 						<?php
 						
-						if ($main_content == true){
+						if (true){
 							?>
 
 						<div class="search-container">

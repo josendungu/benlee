@@ -6,12 +6,30 @@ $category = new Category();
 $category->fetchAll();
 $category_data = $category->data();
 
+$search_string = '';
+$search_data = '';
+$display_search = false;
+
+if(isset($_POST['search_string'])){
+
+	$search_data = base64_decode($_POST["data"]);
+	$search_string = $_POST["search_string"];
+	$display_search = true;
+
+}
 
 ?> 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PMMN7RR');</script>
+	<!-- End Google Tag Manager -->
 	<title> BenLee Hardware - Number 1 Hardware Store in Kenya </title>
 	<meta charset="utf-8">
 	<meta name="description" content="Benlee Hardware is an online store that deals with selling hardware materials in Kenya such as boards, iron sheets, chain links and Deformed bars">
@@ -35,9 +53,31 @@ $category_data = $category->data();
 	<!-- CSS File -->
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 
+	<!-- Meta Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '835514437915261');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=835514437915261&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- End Meta Pixel Code -->
+
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMMN7RR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMMN7RR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -92,7 +132,26 @@ $category_data = $category->data();
 			</div>
 		</div>
 
-		<div class="content_container"></div>
+
+		<?php 
+		
+		if ($display_search){
+			?>
+			<div class="content_container">
+
+			<?php echo $search_data?>
+
+			</div>
+			<?php
+		} else {
+			?>
+			<div class="content_container"></div>
+			<?php
+
+		}
+		?>
+
+		
 
 		<p class="map">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2714.053510041896!2d36.96674119338755!3d-1.2036433018501267!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f41c543b4a5a3%3A0xa6cbb0d7b1725c06!2sBenLee%20Hardware!5e0!3m2!1sen!2ske!4v1636114514634!5m2!1sen!2ske"  width="100%" height="270" style="border:0;" allowfullscreen="" loading="lazy"></iframe>

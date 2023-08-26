@@ -81,7 +81,19 @@ if($category_fetch){
 
         if ($products == null){
 
-            $output .= "404";
+            $output .= '
+            <div >
+                <div class="error-template">
+                    <h1>Oops!</h1>
+                    
+                    <div class="error-details">
+                        Sorry, an error has occured, Requested page not found!  Please try again later
+                    </div>
+                    
+                </div>
+            </div>
+            
+            ';
 
         } else {
 

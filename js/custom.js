@@ -843,18 +843,28 @@ jQuery(document).ready(function ($) {
     }
 
     function displayMainContent() {
-        jQuery.ajax({
-            url:"main_content.php",
-            method:"post",
-            data:{},
-            success: function(e) {
-                contentContainer.empty();
-                contentContainer.append(e);
-            },
-            error: function(){
-              alert-error("wrong");
-            }
-        })
+
+        var searchThis = isMainContent.innerHTML;
+
+        console.log(isMainContent.innerHTML);
+
+
+        if(searchThis == ''){
+            jQuery.ajax({
+                url:"main_content.php",
+                method:"post",
+                data:{},
+                success: function(e) {
+                    contentContainer.empty();
+                    contentContainer.append(e);
+                },
+                error: function(){
+                  alert-error("wrong");
+                }
+            })
+        }
+
+       
     }
 
 
@@ -930,18 +940,60 @@ jQuery(document).ready(function ($) {
 
         e.preventDefault();
 
+        var request_data = new FormData(this);
+
+        var search_string = request_data.get("search_string");
+        var url = "search-products.php";
+
+        if(!isMainContent){
+            url = "../search-products.php"
+        }
+
         $.ajax({
-            url: "search-products.php",
+            url: url,
             type: "POST",
-            data:  new FormData(this),
+            data: request_data,
             contentType: false,
             cache: false,
             processData:false,
             complete: function(response){
-                data = response.responseText;
+                var responsedata = response.responseText;
+                console.log(responsedata);
+
+                if(!isMainContent){
+                    
+                    var form = document.createElement("form");
+                    form.method = "post";
+                    form.action = "../";  // The page you want to redirect to
+
+
+                    // Create hidden input fields for each POST data
+                    var postdata = {
+                        data: btoa(responsedata),
+                        search_string: search_string
+                    };
+
+                    console.log(postdata);
+
+                    for (var key in postdata) {
+                        if (postdata.hasOwnProperty(key)) {
+                            var input = document.createElement("input");
+                            input.type = "hidden";
+                            input.name = key;
+                            input.value = postdata[key];
+                            form.appendChild(input);
+                        }
+                    }
+
+                    document.body.appendChild(form);
+                    form.submit();
+
+                } else {
+                    contentContainer.empty();
+                    contentContainer.append(responsedata);
+                }
                 
-                contentContainer.empty();
-                contentContainer.append(data);
+               
             }
         });
     }));
@@ -1302,3 +1354,18 @@ jQuery(document).ready(function ($) {
     }
 
 })
+
+
+// jquery extend function
+$.extend(
+    {
+        redirectPost: function(location, args)
+        {
+            var form = '';
+            $.each( args, function( key, value ) {
+                value = value.split('"').join('\"')
+                form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+            });
+            $('<form action="' + location + '" method="POST">' + form + '</form>').appendTo($(document.body)).submit();
+        }
+    });
