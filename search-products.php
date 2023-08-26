@@ -60,7 +60,7 @@ if(Input::exists()){
 
        
     } else {
-        $output .= "   Some error occured";
+        $output .= "Products not found.";
     }
 
    echo $output;

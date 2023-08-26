@@ -846,9 +846,6 @@ jQuery(document).ready(function ($) {
 
         var searchThis = isMainContent.innerHTML;
 
-        console.log(isMainContent.innerHTML);
-
-
         if(searchThis == ''){
             jQuery.ajax({
                 url:"main_content.php",
@@ -958,7 +955,6 @@ jQuery(document).ready(function ($) {
             processData:false,
             complete: function(response){
                 var responsedata = response.responseText;
-                console.log(responsedata);
 
                 if(!isMainContent){
                     
